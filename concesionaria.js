@@ -4,7 +4,7 @@ const autos = require('./autos');
 const concesionaria = {
     autos: autos,/*.forEach((autos) =>{
     console.log(autos);})*/
-    buscarAuto(patente) {
+    buscarAuto(patente) { //  
         let stock = this.autos
         let autoFiltrado = stock.filter((stock) => {
             return stock.patente == patente  
