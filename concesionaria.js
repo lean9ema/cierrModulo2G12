@@ -26,12 +26,18 @@ const concesionaria = {
     },
     autosParaLaVenta(){
 
-        let autosNoVendidos =this.autos.filter((stock)=>{
+        let autosNoVendidos = this.autos.filter((stock)=>{
             return stock.vendido != true
+        });
+        return autosNoVendidos
+    },
+    autosNuevos(){
+        let autosNoVendidos = this.autos.filter((stock)=>{
+            return stock.km < 100;
         });
         return autosNoVendidos
     }
 }
 
 
-console.log(concesionaria.autosParaLaVenta());
+console.log(concesionaria.autosNuevos());
