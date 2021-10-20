@@ -31,13 +31,20 @@ const concesionaria = {
         });
         return autosNoVendidos
     },
-    autosNuevos(){
-        let autosNoVendidos = this.autos.filter((stock)=>{
+    autos0KM(){
+        let autosOKm =  this.autosParaLaVenta.filter((stock)=>{
             return stock.km < 100;
         });
-        return autosNoVendidos
+        return autosOKm
+    },
+    autosNuevos(patente){
+        
+        let autosOKm = this.autos0KM.filter((stock)=>{
+            return stock.patente != patente;
+        });
+        return autosOKm
     }
 }
 
 
-console.log(concesionaria.autosNuevos());
+console.log(concesionaria.autosNuevos('JJK116'));
