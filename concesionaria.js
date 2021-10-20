@@ -39,10 +39,10 @@ const concesionaria = {
     },
     autosNuevos(patente){
 
-        let autosOKm = this.autos0KM((stock)=>{
-            return stock.patente == patente;
+        let autos0Km = this.autos0KM().filter((stock)=>{  
+            return stock.patente == patente; 
         });
-        return autosOKm
+        return autos0Km
     }
 
 }
