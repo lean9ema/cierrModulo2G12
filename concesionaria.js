@@ -24,26 +24,27 @@ const concesionaria = {
            console.log(autos);  
         })
     },
-    autosParaLaVenta(){
+    autosParaLaVenta : function (){
 
         let autosNoVendidos = this.autos.filter((stock)=>{
             return stock.vendido != true
         });
         return autosNoVendidos
     },
-    autos0KM(){
-        let autosOKm =  this.autosParaLaVenta.filter((stock)=>{
+    autos0KM (){
+        let autosKm =  this.autosParaLaVenta().filter((stock)=>{
             return stock.km < 100;
         });
-        return autosOKm
+        return autosKm
     },
     autosNuevos(patente){
-        
-        let autosOKm = this.autos0KM.filter((stock)=>{
-            return stock.patente != patente;
+
+        let autosOKm = this.autos0KM((stock)=>{
+            return stock.patente == patente;
         });
         return autosOKm
     }
+
 }
 
 
