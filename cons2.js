@@ -2,29 +2,23 @@ const autos = require('./autos');
 
 
 const concesionaria = {
-    autos: autos,/*.forEach((autos) =>{
-    console.log(autos);})*/
+    autos: autos,
     buscarAuto(patente) { //Funcionalidad de buscar auto por medio de la patente.
         let stock = this.autos //inicializar variable, con la listas de coches
         let autoFiltrado = stock.filter((stock) => { // Filtrado comparando autos en stock con la patente solicitada
             return stock.patente == patente  
         });
 
-        if(autoFiltrado.length > 0){ // corroborar si hay datos dentro de la array
-            return autoFiltrado[0]
-        }else{
-            return null
-        }
-
+        return autoFiltrado.length > 0 ? autoFiltrado[0] : null // corroborar si hay datos dentro de la array
     },
-    venderAuto(patente){ // Funcionalidad que busqueda de auto para la venta por medio de la patente 
+    venderAuto (patente){ // Funcionalidad que busqueda de auto para la venta por medio de la patente 
         autoFiltrado = this.buscarAuto(patente); //Inicializar variable, con el resultado de la funcion bucarAuto
         this.autos.map(function(autos){ 
            autoFiltrado == autos ?  autos.vendido = true : '' //Si la patente del auto coincide con la patente solicitada, su estado cambia a vendido 
            console.log(autos);  
         })
     },
-    autosParaLaVenta : function (){ // Funcionalidad que devuelve el listado de autos que se pueden vender 
+    autosParaLaVenta (){ // Funcionalidad que devuelve el listado de autos que se pueden vender 
 
         let autosNoVendidos = this.autos.filter((stock)=>{ // Inicializar variable, con listado de autos filtradodos por medio de callback
             return stock.vendido != true // filtro corroborando si no esta vendido
@@ -37,15 +31,21 @@ const concesionaria = {
         });
         return autosKm
     },
-    autosNuevos(patente){ //Funcionalidad que compara patente con el listado de autos0KM
+    autosNuevos (patente){ //Funcionalidad que compara patente con el listado de autos0KM
 
         let autos0Km = this.autos0KM().filter((stock)=>{  // inicializacion de variable con el listado de auto0KM
             return stock.patente == patente; // Comparación de las patentes de los autos0KM con la patente solicitada
         });
-        return autos0Km
-    }
+        return autos0Km 
+    },
+    listaDeVentas (){
+        let autosVendidos =  this.autos.filter(stock => stock.vendido == true); //funciona
+        autosVendidos.map(stock => console.log(stock.precio));
+    },
+    totalDeVentas (){
 
+    },
 }
 
 
-console.log(concesionaria.autosNuevos('JJK116'));
+console.log(concesionaria.buscarAuto('JJK116'));
