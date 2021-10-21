@@ -23,12 +23,24 @@ let autos = [{
     {
         marca:'Ford', 
         modelo: 'Mustang', 
-        precio:10000000000, 
+        precio: 100000, 
         km:123, 
         color:'Rojo', 
         cuotas:14, 
         anio:2019, 
         patente:'JJK116', 
+        vendido: true
+
+    },
+    {
+        marca:'Toyota', 
+        modelo: 'Hilux', 
+        precio: 340000, 
+        km:50, 
+        color:'Blanco', 
+        cuotas:12, 
+        anio:2021, 
+        patente:'MAN212', 
         vendido: true
 
     },
