@@ -29,7 +29,7 @@ let autos = [{
         cuotas:14, 
         anio:2019, 
         patente:'JJK116', 
-        vendido: true
+        vendido: false
 
     },
     {
@@ -41,7 +41,7 @@ let autos = [{
         cuotas:12, 
         anio:2021, 
         patente:'MAN212', 
-        vendido: true
+        vendido: false
 
     },
 ]

@@ -50,8 +50,18 @@ const concesionaria = {
         b.push(autosVendidos.map(stock => stock.precio));
         return b[0]
     },
+    totalDeVentas (){
+        let ventas = this.listaDeVentas();
+        let total = 0;
+        if(ventas.length > 0){ 
+         total = ventas.reduce(function(acum,elem){ 
+         return acum + elem});
+        }
+        return total
+    }
 
 }
 
 
 console.log(concesionaria.listaDeVentas());
+console.log(concesionaria.totalDeVentas());
