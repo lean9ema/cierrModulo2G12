@@ -1,9 +1,10 @@
 const autos = require('./autos');
+const personas = require('./personas')
 
 
 const concesionaria = {
-    autos: autos,/*.forEach((autos) =>{
-    console.log(autos);})*/
+    autos: autos,
+    personas : personas,
     buscarAuto(patente) { //  
         let stock = this.autos
         let autoFiltrado = stock.filter((stock) => {
@@ -58,10 +59,24 @@ const concesionaria = {
          return acum + elem});
         }
         return total
+    },
+    puedeComprar (auto,persona){
+        let pagoPorCuota = auto.precio/auto.cuotas;
+        if (pagoPorCuota <= persona.capacidadDePagoEnCuotas && auto.precio <= persona.capacidadDePagoTotal){ // nose pq pide && y no ||
+            this.venderAuto(auto.patente)
+            return true
+        }
+         return false
     }
+
 
 }
 
+let persona = {
+    nombre: "Juan",
+    capacidadDePagoEnCuotas: 20000,
+    capacidadDePagoTotal: 100000
+    }
 
-console.log(concesionaria.listaDeVentas());
-console.log(concesionaria.totalDeVentas());
+
+console.log(concesionaria.puedeComprar(concesionaria.autos[2],persona));
