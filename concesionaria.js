@@ -43,9 +43,15 @@ const concesionaria = {
             return stock.patente == patente; 
         });
         return autos0Km
-    }
+    },
+    listaDeVentas (){
+        let b = [];
+        let autosVendidos =  this.autos.filter(stock => stock.vendido == true); //funciona
+        b.push(autosVendidos.map(stock => stock.precio));
+        return b[0]
+    },
 
 }
 
 
-console.log(concesionaria.autosNuevos('JJK116'));
+console.log(concesionaria.listaDeVentas());
