@@ -22,7 +22,6 @@ const concesionaria = {
         autoFiltrado = this.buscarAuto(patente);
         this.autos.map(function(autos){
            autoFiltrado == autos ?  autos.vendido = true : ''
-           console.log(autos);  
         })
     },
     autosParaLaVenta : function (){
@@ -49,7 +48,7 @@ const concesionaria = {
         let b = [];
         let autosVendidos =  this.autos.filter(stock => stock.vendido == true); //funciona
         b.push(autosVendidos.map(stock => stock.precio));
-        return b[0]
+        return b[0] // como  hizo kenet
     },
     totalDeVentas (){
         let ventas = this.listaDeVentas();
@@ -63,20 +62,24 @@ const concesionaria = {
     puedeComprar (auto,persona){
         let pagoPorCuota = auto.precio/auto.cuotas;
         if (pagoPorCuota <= persona.capacidadDePagoEnCuotas && auto.precio <= persona.capacidadDePagoTotal){ // nose pq pide && y no ||
-            this.venderAuto(auto.patente)
-            return true
+            //this.venderAuto(auto.patente)
+            return true;
         }
-         return false
-    }
-
-
+         return false;
+    },
+    autosQuePuedeComprar (persona){
+        let listaAutos = this.listaDeVentas().filter((stock)  =>  this.puedeComprar(stock,persona)); // los filters solo reciben un true y false, si es true se agrega a la lista
+        return  listaAutos
+    },
 }
 
-let persona = {
+/*let persona = {
     nombre: "Juan",
     capacidadDePagoEnCuotas: 20000,
     capacidadDePagoTotal: 100000
-    }
+    }*/
 
 
-console.log(concesionaria.puedeComprar(concesionaria.autos[2],persona));
+//console.log(concesionaria.puedeComprar(concesionaria.autos[2],concesionaria.personas[0]));
+console.log(concesionaria.autosQuePuedeComprar(concesionaria.personas[0]));
+

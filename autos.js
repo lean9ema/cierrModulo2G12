@@ -1,4 +1,5 @@
-let autos = [{ 
+let autos = [
+    { 
      marca: "Ford",
      modelo: "Fiesta",
      precio:150000,
@@ -7,7 +8,8 @@ let autos = [{
      cuotas: 12,
      anio: 2019,
      patente:'APL123',
-     vendido: false},
+     vendido: false
+    },
     {
         marca:'Toyota', 
         modelo: 'Corolla', 
@@ -29,19 +31,19 @@ let autos = [{
         cuotas:14, 
         anio:2019, 
         patente:'JJK116', 
-        vendido: true
+        vendido: false
 
     },
     {
         marca:'Toyota', 
         modelo: 'Hilux', 
-        precio: 340000, 
+        precio: 90000, 
         km:50, 
         color:'Blanco', 
         cuotas:12, 
         anio:2021, 
         patente:'MAN212', 
-        vendido: true
+        vendido: false
 
     },
 ]
