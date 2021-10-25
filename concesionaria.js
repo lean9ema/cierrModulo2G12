@@ -61,14 +61,14 @@ const concesionaria = {
     },
     puedeComprar (auto,persona){
         let pagoPorCuota = auto.precio/auto.cuotas;
-        if (pagoPorCuota <= persona.capacidadDePagoEnCuotas && auto.precio <= persona.capacidadDePagoTotal){ // nose pq pide && y no ||
+        if (pagoPorCuota <= persona.capacidadDePagoEnCuotas && auto.precio <= persona.capacidadDePagoTotal){ // nose pq pide && y no || 
             //this.venderAuto(auto.patente)
-            return true;
+            return true; // devolver todo el if en un return
         }
          return false;
     },
     autosQuePuedeComprar (persona){
-        let listaAutos = this.listaDeVentas().filter((stock)  =>  this.puedeComprar(stock,persona)); // los filters solo reciben un true y false, si es true se agrega a la lista
+        let listaAutos = this.autosParaLaVenta().filter((stock)  =>  this.puedeComprar(stock,persona)); // los filters solo reciben un true y false, si es true se agrega a la lista
         return  listaAutos
     },
 }
