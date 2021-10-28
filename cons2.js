@@ -1,8 +1,10 @@
 const autos = require('./autos');
+const personas = require('./personas')
 
 
 const concesionaria = {
     autos: autos,
+    personas : personas,
     buscarAuto(patente) { //Funcionalidad de buscar auto por medio de la patente.
         let stock = this.autos //inicializar variable, con la listas de coches
         let autoFiltrado = stock.filter((stock) => { // Filtrado comparando autos en stock con la patente solicitada
@@ -39,13 +41,30 @@ const concesionaria = {
         return autos0Km 
     },
     listaDeVentas (){
-        let autosVendidos =  this.autos.filter(stock => stock.vendido == true); //funciona
-        autosVendidos.map(stock => console.log(stock.precio));
+        let listaDeVentas = [];
+        let autosVendidos =  this.autos.filter( stock => stock.vendido); //funciona
+        listaDeVentas.push(autosVendidos.map(stock => stock.precio));
+        return listaDeVentas[0] ;
     },
     totalDeVentas (){
-
+        let ventas = this.listaDeVentas();
+        let total = 0;
+        if(ventas.length > 0){ 
+         total = ventas.reduce(function(acum,elem){ 
+         return acum + elem});
+        }
+        return total
+    },
+    puedeComprar (auto,persona){
+        let pagoPorCuota = auto.precio/auto.cuotas;
+        return pagoPorCuota <= persona.capacidadDePagoEnCuotas && auto.precio <= persona.capacidadDePagoTotal ? true : false
+    },
+    autosQuePuedeComprar (persona){
+        let listaAutos = this.autosParaLaVenta().filter((stock)  =>  this.puedeComprar(stock,persona)); // los filters solo reciben un true y false, si es true se agrega a la lista
+        return  listaAutos
     },
 }
 
-
-console.log(concesionaria.buscarAuto('JJK116'));
+console.log(concesionaria.puedeComprar(concesionaria.autos[2],concesionaria.personas[0]))
+console.log(concesionaria.autosQuePuedeComprar(concesionaria.personas[0]));
+console.log(concesionaria.listaDeVentas());
